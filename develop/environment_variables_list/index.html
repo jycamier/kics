@@ -10,14 +10,14 @@
       
       
       
-        <link rel="canonical" href="http://docs.kics.io/develop/commands/">
+        <link rel="canonical" href="http://docs.kics.io/develop/environment_variables_list/">
       
       <link rel="icon" href="../img/logo/kics-hat.ico">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.6">
     
     
       
-        <title>Command Line Interface - KICS</title>
+        <title>Environment variables list - KICS</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kics_cli" class="md-skip">
+        <a href="#environment_variables_list" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Command Line Interface
+              Environment variables list
             
           </span>
         </div>
@@ -197,15 +197,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../getting-started/" class="md-tabs__link md-tabs__link--active">
+      <a href="../getting-started/" class="md-tabs__link">
         Getting Started
       </a>
     </li>
@@ -351,14 +349,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
       
       
       
@@ -407,80 +403,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Command Line Interface
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
         Command Line Interface
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#kics_command" class="md-nav__link">
-    KICS Command
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scan_command_options" class="md-nav__link">
-    Scan Command Options
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#library_flag_usage" class="md-nav__link">
-    Library Flag Usage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#profiling" class="md-nav__link">
-    Profiling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disable_crash_report" class="md-nav__link">
-    Disable Crash Report
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1221,8 +1148,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1231,36 +1156,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#kics_command" class="md-nav__link">
-    KICS Command
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scan_command_options" class="md-nav__link">
-    Scan Command Options
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#library_flag_usage" class="md-nav__link">
-    Library Flag Usage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#profiling" class="md-nav__link">
-    Profiling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disable_crash_report" class="md-nav__link">
-    Disable Crash Report
+  <a href="#environment_variables_list" class="md-nav__link">
+    Environment Variables List
   </a>
   
 </li>
@@ -1277,123 +1174,57 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/Checkmarx/kics/edit/master/docs/commands.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/Checkmarx/kics/edit/master/docs/environment_variables_list.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
 
-<h1 id="kics_cli">KICS CLI<a class="headerlink" href="#kics_cli" title="Permanent link">&para;</a></h1>
-<p>KICS is a command line tool, and should be used in a terminal. The next section describes the usage, the same help content is displayed when kics is provided with the <code>--help</code> flag.</p>
-<h2 id="kics_command">KICS Command<a class="headerlink" href="#kics_command" title="Permanent link">&para;</a></h2>
-<p>KICS has the following commands available:</p>
-<pre><code class="language-txt">Keeping Infrastructure as Code Secure
+  <h1>Environment variables list</h1>
 
-Usage:
-  kics [command]
-
-Available Commands:
-  generate-id    Generates uuid for query
-  help           Help about any command
-  list-platforms List supported platforms
-  scan           Executes a scan analysis
-  version        Displays the current version
-
-Flags:
-      --ci                  display only log messages to CLI output (mutually exclusive with silent)
-  -h, --help                help for kics
-  -f, --log-format string   determines log format (pretty,json) (default &quot;pretty&quot;)
-      --log-level string    determines log level (TRACE,DEBUG,INFO,WARN,ERROR,FATAL) (default &quot;INFO&quot;)
-      --log-path string     path to generate log file (info.log)
-      --no-color            disable CLI color output
-      --profiling string    enables performance profiler that prints resource consumption metrics in the logs during the execution (CPU, MEM)
-  -s, --silent              silence stdout messages (mutually exclusive with verbose and ci)
-  -v, --verbose             write logs to stdout too (mutually exclusive with silent)
-
-Use &quot;kics [command] --help&quot; for more information about a command.
-</code></pre>
-<h2 id="scan_command_options">Scan Command Options<a class="headerlink" href="#scan_command_options" title="Permanent link">&para;</a></h2>
-<pre><code class="language-txt">Executes a scan analysis
-
-Usage:
-  kics scan [flags]
-
-Flags:
-  -m, --bom                           include bill of materials (BoM) in results output
-      --cloud-provider strings        list of cloud providers to scan (aws, azure, gcp)
-      --config string                 path to configuration file
-      --disable-full-descriptions     disable request for full descriptions and use default vulnerability descriptions
-      --disable-secrets               disable secrets scanning
-      --exclude-categories strings    exclude categories by providing its name
-                                      cannot be provided with query inclusion flags
-                                      can be provided multiple times or as a comma separated string
-                                      example: 'Access control,Best practices'
-  -e, --exclude-paths strings         exclude paths from scan
-                                      supports glob and can be provided multiple times or as a quoted comma separated string
-                                      example: './shouldNotScan/*,somefile.txt'
-      --exclude-queries strings       exclude queries by providing the query ID
-                                      cannot be provided with query inclusion flags
-                                      can be provided multiple times or as a comma separated string
-                                      example: 'e69890e6-fce5-461d-98ad-cb98318dfc96,4728cd65-a20c-49da-8b31-9c08b423e4db'
-  -x, --exclude-results strings       exclude results by providing the similarity ID of a result
-                                      can be provided multiple times or as a comma separated string
-                                      example: 'fec62a97d569662093dbb9739360942f...,31263s5696620s93dbb973d9360942fc2a...'
-      --exclude-severities strings    exclude results by providing the severity of a result
-                                      can be provided multiple times or as a comma separated string
-                                      example: 'info,low'
-      --fail-on strings               which kind of results should return an exit code different from 0
-                                      accepts: high, medium, low and info
-                                      example: &quot;high,low&quot; (default [high,medium,low,info])
-  -h, --help                          help for scan
-      --ignore-on-exit string         defines which kind of non-zero exits code should be ignored
-                                      accepts: all, results, errors, none
-                                      example: if 'results' is set, only engine errors will make KICS exit code different from 0 (default &quot;none&quot;)
-  -i, --include-queries strings       include queries by providing the query ID
-                                      cannot be provided with query exclusion flags
-                                      can be provided multiple times or as a comma separated string
-                                      example: 'e69890e6-fce5-461d-98ad-cb98318dfc96,4728cd65-a20c-49da-8b31-9c08b423e4db'
-      --input-data string             path to query input data files
-  -b, --libraries-path string         path to directory with libraries (default &quot;./assets/libraries&quot;)
-      --minimal-ui                    simplified version of CLI output
-      --no-progress                   hides the progress bar
-      --output-name string            name used on report creations (default &quot;results&quot;)
-  -o, --output-path string            directory path to store reports
-  -p, --path strings                  paths or directories to scan
-                                      example: &quot;./somepath,somefile.txt&quot;
-      --payload-lines                 adds line information inside the payload when printing the payload file
-  -d, --payload-path string           path to store internal representation JSON file
-      --preview-lines int             number of lines to be display in CLI results (min: 1, max: 30) (default 3)
-  -q, --queries-path strings          paths to directory with queries (default [./assets/queries])
-      --report-formats strings        formats in which the results will be exported (all, asff, cyclonedx, glsast, html, json, junit, pdf, sarif, sonarqube) (default [json])
-  -r, --secrets-regexes-path string   path to secrets regex rules configuration file
-      --timeout int                   number of seconds the query has to execute before being canceled (default 60)
-  -t, --type strings                  case insensitive list of platform types to scan
-                                      (Ansible, AzureResourceManager, Buildah, CloudFormation, DockerCompose, Dockerfile, GRPC, GoogleDeploymentManager, Kubernetes, OpenAPI, Terraform)
-
-Global Flags:
-      --ci                  display only log messages to CLI output (mutually exclusive with silent)
-  -f, --log-format string   determines log format (pretty,json) (default &quot;pretty&quot;)
-      --log-level string    determines log level (TRACE,DEBUG,INFO,WARN,ERROR,FATAL) (default &quot;INFO&quot;)
-      --log-path string     path to generate log file (info.log)
-      --no-color            disable CLI color output
-      --profiling string    enables performance profiler that prints resource consumption metrics in the logs during the execution (CPU, MEM)
-  -s, --silent              silence stdout messages (mutually exclusive with verbose and ci)
-  -v, --verbose             write logs to stdout too (mutually exclusive with silent)
-</code></pre>
-<p>The other commands have no further options.</p>
-<h2 id="library_flag_usage">Library Flag Usage<a class="headerlink" href="#library_flag_usage" title="Permanent link">&para;</a></h2>
-<p>As mentioned above, the library flag (<code>-b</code> or <code>--libraries-path</code>) refers to the directory with libraries. The functions need to be grouped by platform and the library file name should follow the format: <code>&lt;platform&gt;.rego</code> to be loaded by KICS. It doesn't matter your directory structure. In other words, for example, if you want to indicate a directory that contains a library for your terraform queries, you should group your functions (used in your terraform queries) in a file named <code>terraform.rego</code> wherever you want.</p>
-<p>This will merge the custom libraries found on the flag's path with KICS's default libraries. Note that any functions declared in a custom library with the same signature as an existing function in the <a href="https://github.com/Checkmarx/kics/tree/master/assets/libraries">default libraries</a> will cause <strong>the default library function to be overwritten by the custom definition provided</strong>.</p>
-<hr />
-<h2 id="profiling">Profiling<a class="headerlink" href="#profiling" title="Permanent link">&para;</a></h2>
-<p>With the <code>--profiling</code> flag KICS will print resource consumption information in the logs.</p>
-<p>You can only enable one profiler at a time, CPU or MEM.</p>
-<p>📝 Please note that execution time may be impacted by enabling performance profiler due to sampling</p>
-<h2 id="disable_crash_report">Disable Crash Report<a class="headerlink" href="#disable_crash_report" title="Permanent link">&para;</a></h2>
-<p>You can disable KICS crash report to <a href="https://sentry.io">sentry.io</a> with <code>DISABLE_CRASH_REPORT</code> environment variable set to <code>0</code> or <code>false</code> e.g:</p>
-<pre><code class="language-sh">DISABLE_CRASH_REPORT=0 ./bin/kics version
-# 'KICS crash report disabled' message should appear in the logs
-</code></pre>
+<h2 id="environment_variables_list">Environment Variables List<a class="headerlink" href="#environment_variables_list" title="Permanent link">&para;</a></h2>
+<p>This document lists all the environment variables that can be used in KICS grouped by their purpose.</p>
+<h4 id="environment_variables_to_fill_flags_values"><a href="https://github.com/Checkmarx/kics/blob/master/docs/configuration-file.md#environment-variables">Environment Variables to fill flags values</a><a class="headerlink" href="#environment_variables_to_fill_flags_values" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>KICS_&lt;target_flag&gt;</code></li>
+</ul>
+<h4 id="terraformer_aws"><a href="https://github.com/Checkmarx/kics/blob/master/docs/integrations_terraformer.md#configure-aws-credentials">Terraformer AWS</a><a class="headerlink" href="#terraformer_aws" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>AWS_ACCESS_KEY_ID</code></li>
+<li><code>AWS_SECRET_ACCESS_KEY</code></li>
+<li><code>AWS_SESSION_TOKEN</code></li>
+</ul>
+<h4 id="terraformer_azure"><a href="https://github.com/Checkmarx/kics/blob/master/docs/integrations_terraformer.md#configure-azure-credentials">Terraformer AZURE</a><a class="headerlink" href="#terraformer_azure" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>ARM_SUBSCRIPTION_ID</code></li>
+<li><code>ARM_CLIENT_ID</code></li>
+<li><code>ARM_CLIENT_CERTIFICATE_PATH</code></li>
+<li><code>ARM_CLIENT_CERTIFICATE_PASSWORD</code></li>
+<li><code>ARM_TENANT_ID</code></li>
+</ul>
+<h4 id="terraformer_gcp"><a href="https://github.com/Checkmarx/kics/blob/master/docs/integrations_terraformer.md#configure-azure-credentials">Terraformer GCP</a><a class="headerlink" href="#terraformer_gcp" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>GOOGLE_APPLICATION_CREDENTIALS</code></li>
+</ul>
+<h4 id="asff_report"><a href="https://github.com/Checkmarx/kics/blob/master/docs/results.md#asff">ASFF report</a><a class="headerlink" href="#asff_report" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>AWS_ACCOUNT_ID</code></li>
+<li><code>AWS_REGION</code></li>
+</ul>
+<h4 id="decrypt_ansible_vaults_on_the_fly"><a href="https://github.com/Checkmarx/kics/blob/master/docs/platforms.md#ansible">Decrypt Ansible Vaults on the fly</a><a class="headerlink" href="#decrypt_ansible_vaults_on_the_fly" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>ANSIBLE_VAULT_PASSWORD_FILE</code></li>
+</ul>
+<h4 id="proxy_configurations"><a href="https://github.com/Checkmarx/kics/blob/master/docs/results.md#descriptions">Proxy configurations</a><a class="headerlink" href="#proxy_configurations" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>HTTP_PROXY</code></li>
+<li><code>HTTPS_PROXY</code></li>
+<li><code>NO_PROXY</code></li>
+</ul>
+<h4 id="disable_crash_report"><a href="https://github.com/Checkmarx/kics/blob/master/docs/commands.md#disable-crash-report">Disable Crash Report</a><a class="headerlink" href="#disable_crash_report" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>DISABLE_CRASH_REPORT</code></li>
+</ul>
 
               
             </article>
@@ -1403,41 +1234,6 @@ Global Flags:
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../configuration-file/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Configuration" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Configuration
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../running-kics/" class="md-footer__link md-footer__link--next" aria-label="Next: Running KICS" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Running KICS
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
