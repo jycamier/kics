@@ -97,7 +97,7 @@
 				
 				<option value="file20">github.com/Checkmarx/kics/pkg/analyzer/analyzer.go (85.5%)</option>
 				
-				<option value="file21">github.com/Checkmarx/kics/pkg/builder/engine/engine.go (72.6%)</option>
+				<option value="file21">github.com/Checkmarx/kics/pkg/builder/engine/engine.go (71.8%)</option>
 				
 				<option value="file22">github.com/Checkmarx/kics/pkg/builder/model/model.go (100.0%)</option>
 				
@@ -129,7 +129,7 @@
 				
 				<option value="file36">github.com/Checkmarx/kics/pkg/engine/provider/filesystem.go (71.8%)</option>
 				
-				<option value="file37">github.com/Checkmarx/kics/pkg/engine/secrets/inspector.go (85.1%)</option>
+				<option value="file37">github.com/Checkmarx/kics/pkg/engine/secrets/inspector.go (85.0%)</option>
 				
 				<option value="file38">github.com/Checkmarx/kics/pkg/engine/similarity/similarity_id.go (94.7%)</option>
 				
@@ -143,7 +143,7 @@
 				
 				<option value="file43">github.com/Checkmarx/kics/pkg/kics/resolver_sink.go (0.0%)</option>
 				
-				<option value="file44">github.com/Checkmarx/kics/pkg/kics/service.go (42.2%)</option>
+				<option value="file44">github.com/Checkmarx/kics/pkg/kics/service.go (40.3%)</option>
 				
 				<option value="file45">github.com/Checkmarx/kics/pkg/kics/sink.go (40.0%)</option>
 				
@@ -171,7 +171,7 @@
 				
 				<option value="file57">github.com/Checkmarx/kics/pkg/parser/docker/comments.go (100.0%)</option>
 				
-				<option value="file58">github.com/Checkmarx/kics/pkg/parser/docker/parser.go (95.0%)</option>
+				<option value="file58">github.com/Checkmarx/kics/pkg/parser/docker/parser.go (95.7%)</option>
 				
 				<option value="file59">github.com/Checkmarx/kics/pkg/parser/grpc/converter/converter.go (87.4%)</option>
 				
@@ -2174,13 +2174,13 @@ func (m *Metrics) Stop() <span class="cov3" title="3">{
 // the type of profile
 func getTotal(prof *profile.Profile, idx int) int64 <span class="cov2" title="2">{
         var total, diffTotal int64
-        for _, sample := range prof.Sample </span><span class="cov8" title="32">{
+        for _, sample := range prof.Sample </span><span class="cov8" title="33">{
                 var v int64
                 v = sample.Value[idx]
                 if v &lt; 0 </span><span class="cov0" title="0">{
                         v = -v
                 }</span>
-                <span class="cov8" title="32">total += v
+                <span class="cov8" title="33">total += v
                 if sample.DiffBaseSample() </span><span class="cov0" title="0">{
                         diffTotal += v
                 }</span>
@@ -2205,7 +2205,7 @@ func (m *Metrics) formatTotal(b int64, typeMap map[string]float64, defaultMetric
                 <span class="cov1" title="1">return fmt.Sprintf("%.f%s", metric, defaultMetric)</span>
         }
         <span class="cov6" title="10">for k, u := range typeMap </span><span class="cov10" title="55">{
-                if u &gt;= formatter &amp;&amp; (value/u) &gt;= 1.0 </span><span class="cov8" title="23">{
+                if u &gt;= formatter &amp;&amp; (value/u) &gt;= 1.0 </span><span class="cov7" title="17">{
                         formatter = u
                         mesure = k
                 }</span>
@@ -2446,14 +2446,15 @@ import (
 // k8sRegexMetadata - Regex that finds Kubernetes defining property "metadata"
 // k8sRegexSpec - Regex that finds Kubernetes defining property "spec"
 var (
-        openAPIRegex                                    = regexp.MustCompile("\\s*\"?(openapi|swagger)\"?\\s*:")
-        openAPIRegexInfo                                = regexp.MustCompile("\\s*\"?info\"?\\s*:")
-        openAPIRegexPath                                = regexp.MustCompile("\\s*\"?(paths|components|webhooks)\"?\\s*:")
+        openAPIRegex     = regexp.MustCompile("\\s*(\"(openapi|swagger)\"|(openapi|swagger))\\s*:")
+        openAPIRegexInfo = regexp.MustCompile("\\s*(\"info\"|info)\\s*:")
+        openAPIRegexPath = regexp.MustCompile(
+                "\\s*(\"(paths|components|webhooks)\"|(paths|components|webhooks))\\s*:")
         armRegexContentVersion                          = regexp.MustCompile("\\s*\"contentVersion\"\\s*:")
         armRegexResources                               = regexp.MustCompile("\\s*\"resources\"\\s*:")
-        cloudRegex                                      = regexp.MustCompile("\\s*\"?Resources\"?\\s*:")
-        k8sRegex                                        = regexp.MustCompile("\\s*\"?apiVersion\"?\\s*:")
-        k8sRegexKind                                    = regexp.MustCompile("\\s*\"?kind\"?\\s*:")
+        cloudRegex                                      = regexp.MustCompile("\\s*(\"Resources\"|Resources)\\s*:")
+        k8sRegex                                        = regexp.MustCompile("\\s*(\"apiVersion\"|apiVersion)\\s*:")
+        k8sRegexKind                                    = regexp.MustCompile("\\s*(\"kind\"|kind)\\s*:")
         ansibleVaultRegex                               = regexp.MustCompile(`^\s*\$ANSIBLE_VAULT.*`)
         tfPlanRegexPV                                   = regexp.MustCompile("\\s*\"planned_values\"\\s*:")
         tfPlanRegexRC                                   = regexp.MustCompile("\\s*\"resource_changes\"\\s*:")
@@ -2462,15 +2463,15 @@ var (
         cdkTfRegexMetadata                              = regexp.MustCompile("\\s*\"metadata\"\\s*:")
         cdkTfRegexStackName                             = regexp.MustCompile("\\s*\"stackName\"\\s*:")
         cdkTfRegexTerraform                             = regexp.MustCompile("\\s*\"terraform\"\\s*:")
-        artifactsRegexKind                              = regexp.MustCompile("\\s*\"?kind\"?\\s*:")
-        artifactsRegexProperties                        = regexp.MustCompile("\\s*\"?properties\"?\\s*:")
-        artifactsRegexParametes                         = regexp.MustCompile("\\s*\"?parameters\"?\\s*:")
-        policyAssignmentArtifactRegexPolicyDefinitionID = regexp.MustCompile("\\s*\"?policyDefinitionId\"?\\s*:")
-        roleAssignmentArtifactRegexPrincipalIds         = regexp.MustCompile("\\s*\"?principalIds\"?\\s*:")
-        roleAssignmentArtifactRegexRoleDefinitionID     = regexp.MustCompile("\\s*\"?roleDefinitionId\"?\\s*:")
-        templateArtifactRegexParametes                  = regexp.MustCompile("\\s*\"?template\"?\\s*:")
-        blueprintpRegexTargetScope                      = regexp.MustCompile("\\s*\"?targetScope\"?\\s*:")
-        blueprintpRegexProperties                       = regexp.MustCompile("\\s*\"?properties\"?\\s*:")
+        artifactsRegexKind                              = regexp.MustCompile("\\s*(\"kind\"|kind)\\s*:")
+        artifactsRegexProperties                        = regexp.MustCompile("\\s*(\"properties\"|properties)\\s*:")
+        artifactsRegexParametes                         = regexp.MustCompile("\\s*(\"parameters\"|parameters)\\s*:")
+        policyAssignmentArtifactRegexPolicyDefinitionID = regexp.MustCompile("\\s*(\"policyDefinitionId\"|policyDefinitionId)\\s*:")
+        roleAssignmentArtifactRegexPrincipalIds         = regexp.MustCompile("\\s*(\"principalIds\"|principalIds)\\s*:")
+        roleAssignmentArtifactRegexRoleDefinitionID     = regexp.MustCompile("\\s*(\"roleDefinitionId\"|roleDefinitionId)\\s*:")
+        templateArtifactRegexParametes                  = regexp.MustCompile("\\s*(\"template\"|template)\\s*:")
+        blueprintpRegexTargetScope                      = regexp.MustCompile("\\s*(\targetScope\"|targetScope)\\s*:")
+        blueprintpRegexProperties                       = regexp.MustCompile("\\s*(\"properties\"|properties)\\s*:")
         buildahRegex                                    = regexp.MustCompile(`\s*buildah\s*from\s*\w+`)
         dockerComposeVersionRegex                       = regexp.MustCompile(`\s*version\s*:`)
         dockerComposeServicesRegex                      = regexp.MustCompile(`\s*services\s*:`)
@@ -2661,7 +2662,7 @@ var types = map[string]regexSlice{
 
 // Analyze will go through the slice paths given and determine what type of queries should be loaded
 // should be loaded based on the extension of the file and the content
-func Analyze(a *Analyzer) (model.AnalyzedPaths, error) <span class="cov4" title="11">{
+func Analyze(a *Analyzer) (model.AnalyzedPaths, error) <span class="cov4" title="12">{
         // start metrics for file analyzer
         metrics.Metric.Start("file_type_analyzer")
         returnAnalyzedPaths := model.AnalyzedPaths{
@@ -2677,40 +2678,40 @@ func Analyze(a *Analyzer) (model.AnalyzedPaths, error) <span class="cov4" title=
         hasGitIgnoreFile, gitIgnore := shouldConsiderGitIgnoreFile(a.Paths[0], a.GitIgnoreFileName, a.ExcludeGitIgnore)
 
         // get all the files inside the given paths
-        for _, path := range a.Paths </span><span class="cov4" title="12">{
+        for _, path := range a.Paths </span><span class="cov4" title="13">{
                 if _, err := os.Stat(path); err != nil </span><span class="cov1" title="1">{
                         return returnAnalyzedPaths, errors.Wrap(err, "failed to analyze path")
                 }</span>
-                <span class="cov4" title="11">if err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error </span><span class="cov6" title="53">{
+                <span class="cov4" title="12">if err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error </span><span class="cov6" title="55">{
                         if err != nil </span><span class="cov0" title="0">{
                                 return err
                         }</span>
 
-                        <span class="cov6" title="53">ext := utils.GetExtension(path)
+                        <span class="cov6" title="55">ext := utils.GetExtension(path)
 
                         if hasGitIgnoreFile &amp;&amp; gitIgnore.MatchesPath(path) </span><span class="cov1" title="2">{
                                 ignoreFiles = append(ignoreFiles, path)
                                 a.Exc = append(a.Exc, path)
                         }</span>
 
-                        <span class="cov6" title="53">if _, ok := possibleFileTypes[ext]; ok &amp;&amp; !isExcludedFile(path, a.Exc) </span><span class="cov6" title="35">{
+                        <span class="cov6" title="55">if _, ok := possibleFileTypes[ext]; ok &amp;&amp; !isExcludedFile(path, a.Exc) </span><span class="cov6" title="37">{
                                 files = append(files, path)
                         }</span>
 
-                        <span class="cov6" title="53">return nil</span>
+                        <span class="cov6" title="55">return nil</span>
                 }); err != nil <span class="cov0" title="0">{
                         log.Error().Msgf("failed to analize path %s: %s", path, err)
                 }</span>
         }
 
         // unwanted is the channel shared by the workers that contains the unwanted files that the parser will ignore
-        <span class="cov4" title="10">unwanted := make(chan string, len(files))
+        <span class="cov4" title="11">unwanted := make(chan string, len(files))
 
-        for i := range a.Types </span><span class="cov4" title="10">{
+        for i := range a.Types </span><span class="cov4" title="11">{
                 a.Types[i] = strings.ToLower(a.Types[i])
         }</span>
 
-        <span class="cov4" title="10">for _, file := range files </span><span class="cov6" title="35">{
+        <span class="cov4" title="11">for _, file := range files </span><span class="cov6" title="37">{
                 wg.Add(1)
                 // analyze the files concurrently
                 a := &amp;analyzerInfo{
@@ -2720,16 +2721,16 @@ func Analyze(a *Analyzer) (model.AnalyzedPaths, error) <span class="cov4" title=
                 go a.worker(results, unwanted, &amp;wg)
         }</span>
 
-        <span class="cov4" title="10">go func() </span><span class="cov4" title="10">{
+        <span class="cov4" title="11">go func() </span><span class="cov4" title="11">{
                 // close channel results when the worker has finished writing into it
-                defer func() </span><span class="cov4" title="10">{
+                defer func() </span><span class="cov4" title="11">{
                         close(unwanted)
                         close(results)
                 }</span>()
-                <span class="cov4" title="10">wg.Wait()</span>
+                <span class="cov4" title="11">wg.Wait()</span>
         }()
 
-        <span class="cov4" title="10">availableTypes := createSlice(results)
+        <span class="cov4" title="11">availableTypes := createSlice(results)
         multiPlatformTypeCheck(&amp;availableTypes)
         unwantedPaths := createSlice(unwanted)
         unwantedPaths = append(unwantedPaths, ignoreFiles...)
@@ -2743,7 +2744,7 @@ func Analyze(a *Analyzer) (model.AnalyzedPaths, error) <span class="cov4" title=
 // worker determines the type of the file by ext (dockerfile and terraform)/content and
 // writes the answer to the results channel
 // if no types were found, the worker will write the path of the file in the unwanted channel
-func (a *analyzerInfo) worker(results, unwanted chan&lt;- string, wg *sync.WaitGroup) <span class="cov6" title="35">{
+func (a *analyzerInfo) worker(results, unwanted chan&lt;- string, wg *sync.WaitGroup) <span class="cov6" title="37">{
         defer wg.Done()
 
         ext := utils.GetExtension(a.filePath)
@@ -2774,7 +2775,7 @@ func (a *analyzerInfo) worker(results, unwanted chan&lt;- string, wg *sync.WaitG
                         results &lt;- grpc
                 }</span>
         // Cloud Formation, Ansible, OpenAPI, Buildah
-        case yaml, yml, json, sh:<span class="cov5" title="27">
+        case yaml, yml, json, sh:<span class="cov5" title="29">
                 a.checkContent(results, unwanted, ext)</span>
         }
 }
@@ -2804,18 +2805,18 @@ func isDockerfile(path string) bool <span class="cov1" title="2">{
 }
 
 // overrides k8s match when all regexs passes for azureresourcemanager key and extension is set to json
-func needsOverride(check bool, returnType, key, ext string) bool <span class="cov9" title="412">{
+func needsOverride(check bool, returnType, key, ext string) bool <span class="cov9" title="444">{
         if check &amp;&amp; returnType == kubernetes &amp;&amp; key == arm &amp;&amp; ext == json </span><span class="cov0" title="0">{
                 return true
-        }</span> else<span class="cov9" title="412"> if check &amp;&amp; returnType == kubernetes &amp;&amp; (key == knative || key == crossplane) &amp;&amp; ext == yaml </span><span class="cov2" title="3">{
+        }</span> else<span class="cov9" title="444"> if check &amp;&amp; returnType == kubernetes &amp;&amp; (key == knative || key == crossplane) &amp;&amp; ext == yaml </span><span class="cov2" title="3">{
                 return true
         }</span>
-        <span class="cov9" title="409">return false</span>
+        <span class="cov9" title="441">return false</span>
 }
 
 // checkContent will determine the file type by content when worker was unable to
 // determine by ext, if no type was determined checkContent adds it to unwanted channel
-func (a *analyzerInfo) checkContent(results, unwanted chan&lt;- string, ext string) <span class="cov5" title="27">{
+func (a *analyzerInfo) checkContent(results, unwanted chan&lt;- string, ext string) <span class="cov5" title="29">{
         typesFlag := a.typesFlag
         // get file content
         content, err := os.ReadFile(a.filePath)
@@ -2824,36 +2825,36 @@ func (a *analyzerInfo) checkContent(results, unwanted chan&lt;- string, ext stri
                 return
         }</span>
 
-        <span class="cov5" title="27">returnType := ""
+        <span class="cov5" title="29">returnType := ""
 
         // Sort map so that CloudFormation (type that as less requireds) goes last
         keys := make([]string, 0, len(types))
-        for k := range types </span><span class="cov9" title="432">{
+        for k := range types </span><span class="cov9" title="464">{
                 keys = append(keys, k)
         }</span>
 
-        <span class="cov5" title="27">if typesFlag[0] != "" </span><span class="cov0" title="0">{
+        <span class="cov5" title="29">if typesFlag[0] != "" </span><span class="cov0" title="0">{
                 keys = getKeysFromTypesFlag(typesFlag)
         }</span>
 
-        <span class="cov5" title="27">sort.Sort(sort.Reverse(sort.StringSlice(keys)))
+        <span class="cov5" title="29">sort.Sort(sort.Reverse(sort.StringSlice(keys)))
 
-        for _, key := range keys </span><span class="cov9" title="432">{
+        for _, key := range keys </span><span class="cov9" title="464">{
                 check := true
-                for _, typeRegex := range types[key].regex </span><span class="cov10" title="513">{
-                        if !typeRegex.Match(content) </span><span class="cov9" title="405">{
+                for _, typeRegex := range types[key].regex </span><span class="cov10" title="545">{
+                        if !typeRegex.Match(content) </span><span class="cov9" title="437">{
                                 check = false
                                 break</span>
                         }
                 }
                 // If all regexs passed and there wasn't a type already assigned
-                <span class="cov9" title="432">if check &amp;&amp; returnType == "" </span><span class="cov5" title="20">{
+                <span class="cov9" title="464">if check &amp;&amp; returnType == "" </span><span class="cov5" title="20">{
                         returnType = key
-                }</span> else<span class="cov9" title="412"> if needsOverride(check, returnType, key, ext) </span><span class="cov2" title="3">{
+                }</span> else<span class="cov9" title="444"> if needsOverride(check, returnType, key, ext) </span><span class="cov2" title="3">{
                         returnType = key
                 }</span>
         }
-        <span class="cov5" title="27">returnType = checkReturnType(a.filePath, returnType, ext, content)
+        <span class="cov5" title="29">returnType = checkReturnType(a.filePath, returnType, ext, content)
         if returnType != "" </span><span class="cov5" title="26">{
                 if typesFlag[0] == "" || utils.Contains(returnType, typesFlag) </span><span class="cov5" title="26">{
                         results &lt;- returnType
@@ -2861,10 +2862,10 @@ func (a *analyzerInfo) checkContent(results, unwanted chan&lt;- string, ext stri
                 }</span>
         }
         // No type was determined (ignore on parser)
-        <span class="cov1" title="1">unwanted &lt;- a.filePath</span>
+        <span class="cov2" title="3">unwanted &lt;- a.filePath</span>
 }
 
-func checkReturnType(path, returnType, ext string, content []byte) string <span class="cov5" title="27">{
+func checkReturnType(path, returnType, ext string, content []byte) string <span class="cov5" title="29">{
         if returnType != "" </span><span class="cov5" title="20">{
                 if returnType == "cdkTf" </span><span class="cov0" title="0">{
                         return terraform
@@ -2872,7 +2873,7 @@ func checkReturnType(path, returnType, ext string, content []byte) string <span 
                 <span class="cov5" title="20">if utils.Contains(returnType, armRegexTypes) </span><span class="cov0" title="0">{
                         return arm
                 }</span>
-        } else<span class="cov3" title="7"> if ext == yaml || ext == yml </span><span class="cov3" title="6">{
+        } else<span class="cov4" title="9"> if ext == yaml || ext == yml </span><span class="cov3" title="6">{
                 if checkHelm(path) </span><span class="cov2" title="4">{
                         return kubernetes
                 }</span>
@@ -2881,7 +2882,7 @@ func checkReturnType(path, returnType, ext string, content []byte) string <span 
                         return platform
                 }</span>
         }
-        <span class="cov5" title="21">return returnType</span>
+        <span class="cov5" title="23">return returnType</span>
 }
 
 func checkHelm(path string) bool <span class="cov3" title="6">{
@@ -2918,14 +2919,14 @@ func checkYamlPlatform(content []byte, path string) string <span class="cov1" ti
 }
 
 // createSlice creates a slice from the channel given removing any duplicates
-func createSlice(chanel chan string) []string <span class="cov5" title="20">{
+func createSlice(chanel chan string) []string <span class="cov5" title="22">{
         slice := make([]string, 0)
-        for i := range chanel </span><span class="cov6" title="35">{
-                if !utils.Contains(i, slice) </span><span class="cov5" title="27">{
+        for i := range chanel </span><span class="cov6" title="37">{
+                if !utils.Contains(i, slice) </span><span class="cov5" title="29">{
                         slice = append(slice, i)
                 }</span>
         }
-        <span class="cov5" title="20">return slice</span>
+        <span class="cov5" title="22">return slice</span>
 }
 
 // getKeysFromTypesFlag gets all the regexes keys related to the types flag
@@ -2942,30 +2943,30 @@ func getKeysFromTypesFlag(typesFlag []string) []string <span class="cov0" title=
 }
 
 // isExcludedFile verifies if the path is pointed in the --exclude-paths flag
-func isExcludedFile(path string, exc []string) bool <span class="cov6" title="37">{
-        for i := range exc </span><span class="cov6" title="41">{
+func isExcludedFile(path string, exc []string) bool <span class="cov6" title="39">{
+        for i := range exc </span><span class="cov6" title="43">{
                 exclude, err := provider.GetExcludePaths(exc[i])
                 if err != nil </span><span class="cov0" title="0">{
                         log.Err(err).Msg("failed to get exclude paths")
                 }</span>
-                <span class="cov6" title="41">for j := range exclude </span><span class="cov6" title="41">{
+                <span class="cov6" title="43">for j := range exclude </span><span class="cov6" title="43">{
                         if exclude[j] == path </span><span class="cov1" title="2">{
                                 log.Info().Msgf("Excluded file %s from analyzer", path)
                                 return true
                         }</span>
                 }
         }
-        <span class="cov6" title="35">return false</span>
+        <span class="cov6" title="37">return false</span>
 }
 
 // shouldConsiderGitIgnoreFile verifies if the scan should exclude the files according to the .gitignore file
-func shouldConsiderGitIgnoreFile(path, gitIgnore string, excludeGitIgnoreFile bool) (bool, *ignore.GitIgnore) <span class="cov4" title="11">{
+func shouldConsiderGitIgnoreFile(path, gitIgnore string, excludeGitIgnoreFile bool) (bool, *ignore.GitIgnore) <span class="cov4" title="12">{
         gitIgnorePath := filepath.ToSlash(filepath.Join(path, gitIgnore))
         _, err := os.Stat(gitIgnorePath)
 
-        if !excludeGitIgnoreFile &amp;&amp; err == nil </span><span class="cov4" title="9">{
+        if !excludeGitIgnoreFile &amp;&amp; err == nil </span><span class="cov4" title="10">{
                 gitIgnore, _ := ignore.CompileIgnoreFile(gitIgnorePath)
-                if gitIgnore != nil </span><span class="cov3" title="5">{
+                if gitIgnore != nil </span><span class="cov3" title="6">{
                         log.Info().Msgf(".gitignore file was found in '%s' and it will be used to automatically exclude paths", path)
                         return true, gitIgnore
                 }</span>
@@ -2973,11 +2974,11 @@ func shouldConsiderGitIgnoreFile(path, gitIgnore string, excludeGitIgnoreFile bo
         <span class="cov3" title="6">return false, nil</span>
 }
 
-func multiPlatformTypeCheck(typesSelected *[]string) <span class="cov4" title="10">{
+func multiPlatformTypeCheck(typesSelected *[]string) <span class="cov4" title="11">{
         if utils.Contains("serverlessfw", *typesSelected) &amp;&amp; !utils.Contains("cloudformation", *typesSelected) </span><span class="cov1" title="1">{
                 *typesSelected = append(*typesSelected, "cloudformation")
         }</span>
-        <span class="cov4" title="10">if utils.Contains("knative", *typesSelected) &amp;&amp; !utils.Contains("kubernetes", *typesSelected) </span><span class="cov1" title="1">{
+        <span class="cov4" title="11">if utils.Contains("knative", *typesSelected) &amp;&amp; !utils.Contains("kubernetes", *typesSelected) </span><span class="cov1" title="1">{
                 *typesSelected = append(*typesSelected, "kubernetes")
         }</span>
 }
@@ -3149,18 +3150,8 @@ func (e *Engine) ExpToString(expr hclsyntax.Expression) (string, error) <span cl
         case *hclsyntax.ObjectConsKeyExpr:<span class="cov3" title="2">
                 return e.ExpToString(t.Wrapped)</span>
         case *hclsyntax.ScopeTraversalExpr:<span class="cov3" title="2">
-                var items []string
-                for _, part := range t.Traversal </span><span class="cov3" title="2">{
-                        switch tt := part.(type) </span>{
-                        case hcl.TraverseAttr:<span class="cov0" title="0">
-                                items = append(items, tt.Name)</span>
-                        case hcl.TraverseRoot:<span class="cov3" title="2">
-                                items = append(items, tt.Name)</span>
-                        case hcl.TraverseIndex:<span class="cov0" title="0">
-                                items = append(items, tt.Key.AsString())</span>
-                        }
-                }
-                <span class="cov3" title="2">return strings.Join(items, "."), nil</span>
+                items := evaluateScopeTraversalExpr(t.Traversal)
+                return strings.Join(items, "."), nil</span>
         }
 
         <span class="cov0" title="0">return "", fmt.Errorf("can't convert expression %T to string", expr)</span>
@@ -3236,6 +3227,26 @@ func (e *Engine) addRule(walkHistory []build.PathItem, comment commentParser.Com
                         Attributes: t.Attributes,
                 })
         }</span>
+}
+
+func evaluateScopeTraversalExpr(t hcl.Traversal) []string <span class="cov3" title="2">{
+        items := make([]string, 0)
+        for _, part := range t </span><span class="cov3" title="2">{
+                switch tt := part.(type) </span>{
+                case hcl.TraverseAttr:<span class="cov0" title="0">
+                        items = append(items, tt.Name)</span>
+                case hcl.TraverseRoot:<span class="cov3" title="2">
+                        items = append(items, tt.Name)</span>
+                case hcl.TraverseIndex:<span class="cov0" title="0">
+                        switch tt.Key.Type() </span>{
+                        case cty.Number:<span class="cov0" title="0">
+                                items = append(items, tt.Key.AsBigFloat().String())</span>
+                        case cty.String:<span class="cov0" title="0">
+                                items = append(items, tt.Key.AsString())</span>
+                        }
+                }
+        }
+        <span class="cov3" title="2">return items</span>
 }
 </pre>
 		
@@ -4568,7 +4579,7 @@ func detectLastSingle(line int, dis map[int]int, idInfo map[int]interface{}, id 
         if idInfo == nil </span><span class="cov4" title="12">{
                 return true
         }</span>
-        <span class="cov3" title="6">for key, value := range dis </span><span class="cov4" title="8">{
+        <span class="cov3" title="6">for key, value := range dis </span><span class="cov4" title="9">{
                 if value == dis[line] &amp;&amp; key != line </span><span class="cov1" title="1">{
                         // check if we are only looking at original data equivalent to the vulnerability
                         if ok := idInfo[id].(map[int]int)[key]; ok != 0 </span><span class="cov1" title="1">{
@@ -4777,7 +4788,7 @@ func createVulnLines(startPos int, lines []string) *[]model.CodeLine <span class
 func SelectLineWithMinimumDistance(distances map[int]int, startingFrom int) int <span class="cov5" title="8">{
         minDistance, lineOfMinDistance := constants.MaxInteger, startingFrom
         for line, distance := range distances </span><span class="cov6" title="11">{
-                if distance &lt; minDistance || distance == minDistance &amp;&amp; line &lt; lineOfMinDistance </span><span class="cov6" title="10">{
+                if distance &lt; minDistance || distance == minDistance &amp;&amp; line &lt; lineOfMinDistance </span><span class="cov5" title="8">{
                         minDistance = distance
                         lineOfMinDistance = line
                 }</span>
@@ -5942,17 +5953,17 @@ func (s *FileSystemSourceProvider) GetSources(ctx context.Context,
 
 func (s *FileSystemSourceProvider) walkDir(ctx context.Context, scanPath string, resolved bool,
         sink Sink, resolverSink ResolverSink, extensions model.Extensions) error <span class="cov1" title="3">{
-        return filepath.Walk(scanPath, func(path string, info os.FileInfo, err error) error </span><span class="cov9" title="29709">{
+        return filepath.Walk(scanPath, func(path string, info os.FileInfo, err error) error </span><span class="cov9" title="29803">{
                 if err != nil </span><span class="cov0" title="0">{
                         return err
                 }</span>
 
-                <span class="cov9" title="29709">if shouldSkip, skipFolder := s.checkConditions(info, extensions, path, resolved); shouldSkip </span><span class="cov9" title="29428">{
+                <span class="cov9" title="29803">if shouldSkip, skipFolder := s.checkConditions(info, extensions, path, resolved); shouldSkip </span><span class="cov9" title="29494">{
                         return skipFolder
                 }</span>
 
                 // ------------------ Helm resolver --------------------------------
-                <span class="cov5" title="281">if info.IsDir() </span><span class="cov1" title="1">{
+                <span class="cov6" title="309">if info.IsDir() </span><span class="cov1" title="1">{
                         excluded, errRes := resolverSink(ctx, strings.ReplaceAll(path, "\\", "/"))
                         if errRes != nil </span><span class="cov0" title="0">{
                                 sentryReport.ReportSentry(&amp;sentryReport.Report{
@@ -5971,17 +5982,17 @@ func (s *FileSystemSourceProvider) walkDir(ctx context.Context, scanPath string,
                 }
                 // -----------------------------------------------------------------
 
-                <span class="cov5" title="280">c, err := os.Open(filepath.Clean(path))
+                <span class="cov6" title="308">c, err := os.Open(filepath.Clean(path))
                 if err != nil </span><span class="cov0" title="0">{
                         if ignoreDamagedFiles(filepath.Clean(path)) </span><span class="cov0" title="0">{
                                 return nil
                         }</span>
                         <span class="cov0" title="0">return errors.Wrap(err, "failed to open file")</span>
                 }
-                <span class="cov5" title="280">defer closeFile(c, info)
+                <span class="cov6" title="308">defer closeFile(c, info)
 
                 err = sink(ctx, strings.ReplaceAll(path, "\\", "/"), c)
-                if err != nil </span><span class="cov5" title="140">{
+                if err != nil </span><span class="cov5" title="154">{
                         sentryReport.ReportSentry(&amp;sentryReport.Report{
                                 Message:  fmt.Sprintf("Filesystem files provider couldn't parse file, file=%s", info.Name()),
                                 Err:      err,
@@ -5989,7 +6000,7 @@ func (s *FileSystemSourceProvider) walkDir(ctx context.Context, scanPath string,
                                 FileName: info.Name(),
                         }, true)
                 }</span>
-                <span class="cov5" title="280">return nil</span>
+                <span class="cov6" title="308">return nil</span>
         })
 }
 
@@ -6007,7 +6018,7 @@ func openScanFile(scanPath string, extensions model.Extensions) (*os.File, error
         <span class="cov1" title="1">return c, nil</span>
 }
 
-func closeFile(file *os.File, info os.FileInfo) <span class="cov5" title="280">{
+func closeFile(file *os.File, info os.FileInfo) <span class="cov6" title="308">{
         if err := file.Close(); err != nil </span><span class="cov0" title="0">{
                 sentryReport.ReportSentry(&amp;sentryReport.Report{
                         Message:  fmt.Sprintf("Filesystem couldn't close file, file=%s", info.Name()),
@@ -6019,31 +6030,31 @@ func closeFile(file *os.File, info os.FileInfo) <span class="cov5" title="280">{
 }
 
 func (s *FileSystemSourceProvider) checkConditions(info os.FileInfo, extensions model.Extensions,
-        path string, resolved bool) (bool, error) <span class="cov10" title="29712">{
+        path string, resolved bool) (bool, error) <span class="cov10" title="29806">{
         s.mu.RLock()
         defer s.mu.RUnlock()
-        if info.IsDir() </span><span class="cov8" title="6606">{
+        if info.IsDir() </span><span class="cov8" title="6618">{
                 if f, ok := s.excludes[info.Name()]; ok &amp;&amp; containsFile(f, info) </span><span class="cov1" title="1">{
                         log.Info().Msgf("Directory ignored: %s", path)
                         return true, filepath.SkipDir
                 }</span>
-                <span class="cov8" title="6605">_, err := os.Stat(filepath.Join(path, "Chart.yaml"))
-                if err != nil || resolved </span><span class="cov8" title="6603">{
+                <span class="cov8" title="6617">_, err := os.Stat(filepath.Join(path, "Chart.yaml"))
+                if err != nil || resolved </span><span class="cov8" title="6615">{
                         return true, nil
                 }</span>
                 <span class="cov1" title="2">return false, nil</span>
         }
 
-        <span class="cov9" title="23106">if f, ok := s.excludes[info.Name()]; ok &amp;&amp; containsFile(f, info) </span><span class="cov0" title="0">{
+        <span class="cov9" title="23188">if f, ok := s.excludes[info.Name()]; ok &amp;&amp; containsFile(f, info) </span><span class="cov0" title="0">{
                 log.Trace().Msgf("File ignored: %s", path)
                 return true, nil
         }</span>
-        <span class="cov9" title="23106">ext := utils.GetExtension(path)
-        if !extensions.Include(ext) </span><span class="cov9" title="22826">{
+        <span class="cov9" title="23188">ext := utils.GetExtension(path)
+        if !extensions.Include(ext) </span><span class="cov9" title="22880">{
                 log.Trace().Msgf("File ignored: %s", path)
                 return true, nil
         }</span>
-        <span class="cov5" title="280">return false, nil</span>
+        <span class="cov6" title="308">return false, nil</span>
 }
 
 func containsFile(fileList []os.FileInfo, target os.FileInfo) bool <span class="cov1" title="1">{
@@ -6089,6 +6100,15 @@ var (
         SecretsQueryMetadata map[string]string
 )
 
+// SecretTracker is Struct created to keep track of the secrets found in the inspector
+// it used for masking all the secrets in the vulnerability preview in the different report formats
+type SecretTracker struct {
+        ResolvedFilePath string
+        Line             int
+        OriginalContent  string
+        MaskedContent    string
+}
+
 type Inspector struct {
         ctx                   context.Context
         tracker               engine.Tracker
@@ -6100,6 +6120,7 @@ type Inspector struct {
         queryExecutionTimeout time.Duration
         foundLines            []int
         mu                    sync.RWMutex
+        SecretTracker         []SecretTracker
 }
 
 type Entropy struct {
@@ -6172,6 +6193,7 @@ func NewInspector(
                         allowRules:            make([]AllowRule, 0),
                         vulnerabilities:       make([]model.Vulnerability, 0),
                         queryExecutionTimeout: time.Duration(executionTimeout) * time.Second,
+                        SecretTracker:         make([]SecretTracker, 0),
                 }, nil
         }</span>
 
@@ -6551,7 +6573,7 @@ func (c *Inspector) addVulnerability(basePaths []string, file *model.FileMetadat
                                 FileID:           file.ID,
                                 FileName:         file.FilePath,
                                 Line:             linesVuln.Line,
-                                VulnLines:        hideSecret(&amp;linesVuln, issueLine, query),
+                                VulnLines:        hideSecret(&amp;linesVuln, issueLine, query, &amp;c.SecretTracker),
                                 IssueType:        "RedundantAttribute",
                                 Platform:         SecretsQueryMetadata["platform"],
                                 Severity:         model.SeverityHigh,
@@ -6683,9 +6705,13 @@ func cleanFiles(files model.FileMetadatas) model.FileMetadatas <span class="cov5
         <span class="cov5" title="264">return cleanFiles</span>
 }
 
-func hideSecret(linesVuln *model.VulnerabilityLines, issueLine string, query *RegexQuery) *[]model.CodeLine <span class="cov1" title="3">{
+func hideSecret(linesVuln *model.VulnerabilityLines,
+        issueLine string,
+        query *RegexQuery,
+        secretTracker *[]SecretTracker) *[]model.CodeLine <span class="cov1" title="3">{
         for idx := range *linesVuln.VulnLines </span><span class="cov1" title="2">{
                 if query.SpecialMask == "all" </span><span class="cov1" title="1">{
+                        addToSecretTracker(secretTracker, linesVuln.ResolvedFile, linesVuln.Line, (*linesVuln.VulnLines)[idx].Line, "&lt;SECRET-MASKED-ON-PURPOSE&gt;")
                         (*linesVuln.VulnLines)[idx].Line = "&lt;SECRET-MASKED-ON-PURPOSE&gt;"
                         continue</span>
                 }
@@ -6705,14 +6731,30 @@ func hideSecret(linesVuln *model.VulnerabilityLines, issueLine string, query *Re
                         }</span>
 
                         <span class="cov1" title="1">if match != "" </span><span class="cov1" title="1">{
+                                originalCntAux := (*linesVuln.VulnLines)[idx].Line
                                 (*linesVuln.VulnLines)[idx].Line = strings.Replace(issueLine, match, "&lt;SECRET-MASKED-ON-PURPOSE&gt;", 1)
+                                addToSecretTracker(secretTracker, linesVuln.ResolvedFile, linesVuln.Line, originalCntAux, (*linesVuln.VulnLines)[idx].Line)
                         }</span> else<span class="cov0" title="0"> {
+                                addToSecretTracker(secretTracker,
+                                        linesVuln.ResolvedFile,
+                                        linesVuln.Line,
+                                        (*linesVuln.VulnLines)[idx].Line,
+                                        "&lt;SECRET-MASKED-ON-PURPOSE&gt;")
                                 (*linesVuln.VulnLines)[idx].Line = "&lt;SECRET-MASKED-ON-PURPOSE&gt;"
                         }</span>
                 }
         }
         <span class="cov1" title="3">return linesVuln.VulnLines</span>
 }
+
+func addToSecretTracker(secretTracker *[]SecretTracker, path string, line int, originalCnt, maskedCnt string) <span class="cov1" title="2">{
+        *secretTracker = append(*secretTracker, SecretTracker{
+                ResolvedFilePath: path,
+                Line:             line,
+                OriginalContent:  originalCnt,
+                MaskedContent:    maskedCnt,
+        })
+}</span>
 </pre>
 		
 		<pre class="file" id="file38" style="display: none">package similarity
@@ -7780,6 +7822,7 @@ import (
         "github.com/Checkmarx/kics/pkg/model"
         "github.com/Checkmarx/kics/pkg/parser"
         "github.com/Checkmarx/kics/pkg/resolver"
+
         "github.com/Checkmarx/kics/pkg/utils"
         "github.com/pkg/errors"
         "github.com/rs/zerolog/log"
@@ -7876,6 +7919,8 @@ func (s *Service) StartScan(
                 errCh &lt;- errors.Wrap(err, "failed to inspect files")
         }</span>
         <span class="cov6" title="4">vulnerabilities = append(vulnerabilities, secretsVulnerabilities...)
+
+        updateMaskedSecrets(&amp;vulnerabilities, s.SecretsInspector.SecretTracker)
 
         err = s.Storage.SaveVulnerabilities(ctx, vulnerabilities)
         if err != nil </span><span class="cov0" title="0">{
@@ -7982,6 +8027,24 @@ func prepareScanDocumentValue(bodyType map[string]interface{}, kind model.FileKi
                 case string:<span class="cov7" title="6">
                         if field, ok := lines[kind]; ok &amp;&amp; utils.Contains(key, field) </span><span class="cov1" title="1">{
                                 bodyType[key] = resolveJSONFilter(value)
+                        }</span>
+                }
+        }
+}
+
+func updateMaskedSecrets(vulnerabilities *[]model.Vulnerability, maskedSecretsTracked []secrets.SecretTracker) <span class="cov6" title="4">{
+        for idx := range *vulnerabilities </span><span class="cov0" title="0">{
+                for _, secretT := range maskedSecretsTracked </span><span class="cov0" title="0">{
+                        updateMaskedSecretLine(&amp;(*vulnerabilities)[idx], secretT)
+                }</span>
+        }
+}
+
+func updateMaskedSecretLine(vulnerability *model.Vulnerability, secretT secrets.SecretTracker) <span class="cov0" title="0">{
+        if vulnerability.FileName == secretT.ResolvedFilePath </span><span class="cov0" title="0">{
+                for vlidx := range *vulnerability.VulnLines </span><span class="cov0" title="0">{
+                        if (*vulnerability.VulnLines)[vlidx].Position == secretT.Line </span><span class="cov0" title="0">{
+                                (*vulnerability.VulnLines)[vlidx].Line = secretT.MaskedContent
                         }</span>
                 }
         }
@@ -10271,18 +10334,19 @@ func (p *Parser) Parse(_ string, fileContent []byte) ([]model.Document, []int, e
         ignoreStruct := newIgnore()
 
         args := make(map[string]string, 0)
+        envs := make(map[string]string, 0)
 
-        for _, child := range parsed.AST.Children </span><span class="cov8" title="27">{
+        for _, child := range parsed.AST.Children </span><span class="cov7" title="27">{
                 child.Value = strings.ToLower(child.Value)
-                if child.Value == "from" </span><span class="cov5" title="6">{
+                if child.Value == "from" </span><span class="cov4" title="6">{
                         fromValue = strings.TrimPrefix(child.Original, "FROM ")
                 }</span>
 
-                <span class="cov8" title="27">if ignoreStruct.getIgnoreComments(child) </span><span class="cov1" title="1">{
+                <span class="cov7" title="27">if ignoreStruct.getIgnoreComments(child) </span><span class="cov1" title="1">{
                         ignoreStruct.setIgnore(fromValue)
                 }</span>
 
-                <span class="cov8" title="27">ignoreStruct.ignoreBlock(child, fromValue)
+                <span class="cov7" title="27">ignoreStruct.ignoreBlock(child, fromValue)
 
                 cmd := Command{
                         Cmd:       child.Value,
@@ -10297,20 +10361,26 @@ func (p *Parser) Parse(_ string, fileContent []byte) ([]model.Document, []int, e
                         child = child.Next.Children[0]
                 }</span>
 
-                <span class="cov8" title="27">cmd.JSON = child.Attributes["json"]
-                for n := child.Next; n != nil; n = n.Next </span><span class="cov10" title="41">{
+                <span class="cov7" title="27">cmd.JSON = child.Attributes["json"]
+                for n := child.Next; n != nil; n = n.Next </span><span class="cov8" title="41">{
                         cmd.Value = append(cmd.Value, n.Value)
                 }</span>
 
-                <span class="cov8" title="27">if child.Value != "arg" </span><span class="cov8" title="22">{
-                        cmd.Value = resolveArgs(cmd.Value, args)
+                <span class="cov7" title="27">if child.Value != "arg" </span><span class="cov7" title="22">{
+                        cmd.Value = resolveArgsAndEnvs(cmd.Value, args)
                 }</span> else<span class="cov4" title="5"> {
                         args = saveArgs(args, cmd.Value[0])
                 }</span>
 
-                <span class="cov8" title="27">if fromValue == "" </span><span class="cov4" title="4">{
+                <span class="cov7" title="27">if child.Value != "env" </span><span class="cov7" title="26">{
+                        cmd.Value = resolveArgsAndEnvs(cmd.Value, envs)
+                }</span> else<span class="cov1" title="1"> {
+                        envs = saveEnvs(envs, cmd.Value)
+                }</span>
+
+                <span class="cov7" title="27">if fromValue == "" </span><span class="cov3" title="4">{
                         arguments = append(arguments, cmd)
-                }</span> else<span class="cov8" title="23"> {
+                }</span> else<span class="cov7" title="23"> {
                         from[fromValue] = append(from[fromValue], cmd)
                 }</span>
         }
@@ -10366,15 +10436,17 @@ func (p *Parser) GetResolvedFiles() map[string]model.ResolvedFile <span class="c
         return make(map[string]model.ResolvedFile)
 }</span>
 
-func resolveArgs(values []string, args map[string]string) []string <span class="cov8" title="22">{
-        for i := range values </span><span class="cov9" title="36">{
-                for arg := range args </span><span class="cov7" title="12">{
-                        ref := fmt.Sprintf("${%s}", arg)
-                        values[i] = strings.Replace(values[i], ref, args[arg], 1)
+func resolveArgsAndEnvs(values []string, args map[string]string) []string <span class="cov9" title="48">{
+        for i := range values </span><span class="cov10" title="75">{
+                for arg := range args </span><span class="cov6" title="16">{
+                        ref1 := fmt.Sprintf("${%s}", arg)
+                        values[i] = strings.Replace(values[i], ref1, args[arg], 1)
+                        ref2 := fmt.Sprintf("$%s", arg)
+                        values[i] = strings.Replace(values[i], ref2, args[arg], 1)
                 }</span>
         }
 
-        <span class="cov8" title="22">return values</span>
+        <span class="cov9" title="48">return values</span>
 }
 
 func saveArgs(args map[string]string, argValue string) map[string]string <span class="cov4" title="5">{
@@ -10388,6 +10460,13 @@ func saveArgs(args map[string]string, argValue string) map[string]string <span c
         }</span>
 
         <span class="cov4" title="5">return args</span>
+}
+
+func saveEnvs(envs map[string]string, envValues []string) map[string]string <span class="cov1" title="1">{
+        if len(envValues) == 2 </span><span class="cov1" title="1">{
+                envs[envValues[0]] = envValues[1]
+        }</span>
+        <span class="cov1" title="1">return envs</span>
 }
 </pre>
 		
@@ -21268,15 +21347,15 @@ func StringifyStruct(v interface{}) (string, error) <span class="cov0" title="0"
 }
 
 // MapToStringSlice extract slice of keys from a map[string]string
-func MapToStringSlice(stringKeyMap map[string]string) []string <span class="cov7" title="4886">{
+func MapToStringSlice(stringKeyMap map[string]string) []string <span class="cov7" title="4895">{
         keys := make([]string, len(stringKeyMap))
 
         i := 0
-        for k := range stringKeyMap </span><span class="cov10" title="73291">{
+        for k := range stringKeyMap </span><span class="cov10" title="73426">{
                 keys[i] = k
                 i++
         }</span>
-        <span class="cov7" title="4886">return keys</span>
+        <span class="cov7" title="4895">return keys</span>
 }
 
 var queryHigh = model.QueryResult{
